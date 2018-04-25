@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Friend Finder</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="text-center">
+				<span class="glyphicon gliphicon-fire"></span>Friend Finder Survey</h1>
+			<br>
+			<h2 class="text-center">Stuff here explaining what to do</h2>
+			<br>
+
+			<div class="text-center">
+				<a href="/">
+					<button type='button' class='btn btn-lg btn-primary'>
+						<span class='glyphicon glyphicon-list-alt'></span>Home</button>
+				</a>
+			</div>
+
+		</div>
+	</div>
+	<form>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="exampleRadios" id="q1a1" value="option1">
+			<label class="form-check-label" for="exampleRadios1">
+				Disagree
+			</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="exampleRadios" id="q1a2" value="option2">
+			<label class="form-check-label" for="exampleRadios2">
+				Slightly Disagree
+			</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="exampleRadios" id="q1a3" value="option1" checked>
+			<label class="form-check-label" for="exampleRadios1">
+				Neutral
+			</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="exampleRadios" id="q1a4" value="option2">
+			<label class="form-check-label" for="exampleRadios2">
+				Slightly Agree
+			</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="exampleRadios" id="q1a5" value="option2">
+			<label class="form-check-label" for="exampleRadios2">
+				Agree
+			</label>
+		</div>
+	</form>
+</body>
+
+<script type='text/javascript'>
+
+	function runFriendQuery() {
+		var currentURL = window.location.origin;
+
+		$.ajax({
+			url: currentURL + '/api/friends',
+			method: 'GET'
+		})
+			.done(function (friendData) {
+				console.log("***********************************");
+				console.log("URL: " + currentURL + "/api/friends");
+				console.log("***********************************");
+				console.log(friendData);
+				console.log("***********************************");
+
+				for (let i = 0; i < friendData.length; i++) {
+					const element = friendData[i];
+					console.log(element);
+
+				}
+			});
+	}
+	runFriendQuery();
+
+</script>
+
+</html>
